@@ -14,6 +14,7 @@
     "canvas": "^2.6.1",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
+    "css-loader": "^4.3.0",
     "es-module-shims": "^0.4.7",
     "escodegen": "^1.14.3",
     "eslint": "^7.8.1",
@@ -32,6 +33,7 @@
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^1.0.0",
     "gulp-zip": "^4.2.0",
+    "http-server": "^0.12.3",
     "jasmine": "^3.6.1",
     "jsdoc": "^3.6.5",
     "jstransformer-markdown-it": "^2.1.0",
@@ -40,8 +42,7 @@
     "needle": "^2.5.2",
     "postcss-calc": "^7.0.4",
     "postcss-css-variables": "^0.14.0",
-    "prettier": "^2.1.1",
-    "puppeteer": "~3.3.0",
+    "prettier": "^1.17.0",
     "rimraf": "^2.7.1",
     "streamqueue": "^1.1.2",
     "stylelint": "^13.7.0",
@@ -63,12 +64,13 @@
     "yargs": "^11.1.1"
   },
   "scripts": {
-    "postinstall": "node -e \"require('child_process').execSync('cross-env PUPPETEER_PRODUCT=firefox node node_modules/puppeteer/install.js');\"",
+    "start": "echo \">> Running pdf.js viewer on port 8000\" && \"./node_modules/.bin/http-server\" -a localhost -p 8000 build/generic",
+    "build": "gulp generic",
     "test": "gulp npm-test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mozilla/pdf.js.git"
+    "url": "git://github.com/legalplusai/pdf.js.git"
   },
   "license": "Apache-2.0"
 }

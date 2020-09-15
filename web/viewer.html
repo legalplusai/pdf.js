@@ -30,7 +30,7 @@ See https://github.com/adobe-type-tools/cmap-resources
 <!--#if GENERIC-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!--#endif-->
-    <title>PDF.js viewer</title>
+    <title>legalplusai/pdf.js</title>
 
 <!--#if MOZCENTRAL-->
 <!--#include viewer-snippet-firefox-extension.html-->
@@ -39,7 +39,6 @@ See https://github.com/adobe-type-tools/cmap-resources
 <!--#include viewer-snippet-chrome-extension.html-->
 <!--#endif-->
 
-    <link rel="stylesheet" href="viewer.css">
 <!--#if !PRODUCTION-->
     <link rel="resource" type="application/l10n" href="locale/locale.properties">
 <!--#endif-->
@@ -59,19 +58,20 @@ See https://github.com/adobe-type-tools/cmap-resources
     <script src="viewer.js" type="module-shim"></script>
 <!--#endif-->
 
+  </head>
+  <body tabindex="1">
+
+    <link rel="stylesheet" href="viewer.css">
 <!--#if (GENERIC && !MINIFIED) -->
 <!--#include viewer-snippet.html-->
 <!--#endif-->
 
 <!--#if !MINIFIED -->
-<!--<script src="viewer.js"></script>-->
+<!--  <script src="viewer.js"></script>-->
 <!--#else-->
 <!--#include viewer-snippet-minified.html-->
 <!--#endif-->
 
-  </head>
-
-  <body tabindex="1">
     <div id="outerContainer">
 
       <div id="sidebarContainer">

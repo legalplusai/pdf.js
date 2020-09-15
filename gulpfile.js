@@ -705,22 +705,22 @@ function buildGeneric(defines, dir) {
   rimraf.sync(dir);
 
   return merge([
-    createMainBundle(defines).pipe(gulp.dest(dir + "build")),
-    createWorkerBundle(defines).pipe(gulp.dest(dir + "build")),
-    createWebBundle(defines).pipe(gulp.dest(dir + "web")),
-    gulp.src(COMMON_WEB_FILES, { base: "web/" }).pipe(gulp.dest(dir + "web")),
+    createMainBundle(defines).pipe(gulp.dest(dir)),
+    createWorkerBundle(defines).pipe(gulp.dest(dir)),
+    createWebBundle(defines).pipe(gulp.dest(dir)),
+    gulp.src(COMMON_WEB_FILES, { base: "web/" }).pipe(gulp.dest(dir)),
     gulp.src("LICENSE").pipe(gulp.dest(dir)),
     gulp
       .src(["web/locale/*/viewer.properties", "web/locale/locale.properties"], {
         base: "web/",
       })
-      .pipe(gulp.dest(dir + "web")),
+      .pipe(gulp.dest(dir)),
     gulp
       .src(["external/bcmaps/*.bcmap", "external/bcmaps/LICENSE"], {
         base: "external/bcmaps",
       })
-      .pipe(gulp.dest(dir + "web/cmaps")),
-    preprocessHTML("web/viewer.html", defines).pipe(gulp.dest(dir + "web")),
+      .pipe(gulp.dest(dir + "cmaps")),
+    preprocessHTML("web/viewer.html", defines).pipe(gulp.dest(dir)),
     preprocessCSS("web/viewer.css", "generic", defines, true)
       .pipe(
         postcss([
@@ -729,11 +729,11 @@ function buildGeneric(defines, dir) {
           autoprefixer(AUTOPREFIXER_CONFIG),
         ])
       )
-      .pipe(gulp.dest(dir + "web")),
+      .pipe(gulp.dest(dir)),
 
     gulp
       .src("web/compressed.tracemonkey-pldi-09.pdf")
-      .pipe(gulp.dest(dir + "web")),
+      .pipe(gulp.dest(dir)),
   ]);
 }
 
@@ -868,7 +868,7 @@ function buildMinified(defines, dir) {
       })
       .pipe(gulp.dest(dir + "web/cmaps")),
 
-    preprocessHTML("web/viewer.html", defines).pipe(gulp.dest(dir + "web")),
+    preprocessHTML("web/viewer.html", defines).pipe(gulp.dest(dir)),
     preprocessCSS("web/viewer.css", "minified", defines, true)
       .pipe(
         postcss([
