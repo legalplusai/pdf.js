@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { createPromiseCapability } from "pdfjs-lib";
+import { createPromiseCapability } from "pdfjs-dist/build/pdf";
 import { getCharacterType } from "./pdf_find_utils.js";
 import { scrollIntoView } from "./ui_utils.js";
 

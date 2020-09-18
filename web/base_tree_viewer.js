@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { removeNullCharacters } from "pdfjs-lib";
+import { removeNullCharacters } from "pdfjs-dist/build/pdf";
 
 class BaseTreeViewer {
   constructor(options) {

@@ -24,9 +24,4 @@ self.importScripts = (function (importScripts) {
   };
 })(importScripts);
 
-importScripts("../node_modules/systemjs/dist/system.js");
-importScripts("../systemjs.config.js");
-
-SystemJS.import("pdfjs/core/worker.js").then(function () {
-  // Worker is loaded at this point.
-});
+import 'pdfjs-dist/build/pdf.worker';

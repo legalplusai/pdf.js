@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { addLinkAttributes, LinkTarget } from "pdfjs-lib";
+import { addLinkAttributes, LinkTarget } from "pdfjs-dist/build/pdf";
 import { BaseTreeViewer } from "./base_tree_viewer.js";
 
 /**

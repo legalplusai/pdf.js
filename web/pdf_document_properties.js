@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { createPromiseCapability, PDFDateString } from "pdfjs-lib";
+import { createPromiseCapability, PDFDateString } from "pdfjs-dist/build/pdf";
 import {
   getPageSizeInches,
   getPDFFileNameFromURL,

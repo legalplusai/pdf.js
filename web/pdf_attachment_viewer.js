@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { createPromiseCapability, getFilenameFromUrl } from "pdfjs-lib";
+import { createPromiseCapability, getFilenameFromUrl } from "pdfjs-dist/build/pdf";
 import { BaseTreeViewer } from "./base_tree_viewer.js";
 import { viewerCompatibilityParams } from "./viewer_compatibility.js";
 

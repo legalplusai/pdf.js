@@ -226,7 +226,7 @@ const defaultOptions = {
   },
   workerSrc: {
     /** @type {string} */
-    value:
+    value: 
       typeof PDFJSDev === "undefined" || !PDFJSDev.test("PRODUCTION")
         ? "../src/worker_loader.js"
         : "pdf.worker.js",

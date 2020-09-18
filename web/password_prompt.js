@@ -14,7 +14,7 @@
  */
 
 import { NullL10n } from "./ui_utils.js";
-import { PasswordResponses } from "pdfjs-lib";
+import { PasswordResponses } from "pdfjs-dist/build/pdf";
 
 /**
  * @typedef {Object} PasswordPromptOptions

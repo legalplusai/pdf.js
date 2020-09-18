@@ -191,10 +191,10 @@ function webViewerLoad() {
   const config = getViewerConfiguration();
   if (typeof PDFJSDev === "undefined" || !PDFJSDev.test("PRODUCTION")) {
     Promise.all([
-      import("pdfjs-web/app.js"),
-      import("pdfjs-web/app_options.js"),
-      import("pdfjs-web/genericcom.js"),
-      import("pdfjs-web/pdf_print_service.js"),
+      import("./app.js"),
+      import("./app_options.js"),
+      import("./genericcom.js"),
+      import("./pdf_print_service.js"),
     ]).then(function ([app, appOptions, genericCom, pdfPrintService]) {
       window.PDFViewerApplication = app.PDFViewerApplication;
       window.PDFViewerApplicationOptions = appOptions.AppOptions;

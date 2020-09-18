@@ -16,7 +16,7 @@
 import {
   createPromiseCapability,
   RenderingCancelledException,
-} from "pdfjs-lib";
+} from "pdfjs-dist/build/pdf";
 import { getOutputScale, NullL10n } from "./ui_utils.js";
 import { RenderingStates } from "./pdf_rendering_queue.js";
 
@@ -464,7 +464,7 @@ class PDFThumbnailView {
   get _thumbPageTitle() {
     return this.l10n.get(
       "thumb_page_title",
-      { page: this.pageLabel ?? this.id },
+      { page: this.pageLabel ? this.pageLabel : this.id },
       "Page {{page}}"
     );
   }
@@ -472,7 +472,7 @@ class PDFThumbnailView {
   get _thumbPageCanvas() {
     return this.l10n.get(
       "thumb_page_canvas",
-      { page: this.pageLabel ?? this.id },
+      { page: this.pageLabel ? this.pageLabel : this.id },
       "Thumbnail of Page {{page}}"
     );
   }

@@ -14,7 +14,7 @@
  */
 
 import { BaseViewer } from "./base_viewer.js";
-import { shadow } from "pdfjs-lib";
+import { shadow } from "pdfjs-dist/build/pdf";
 
 class PDFViewer extends BaseViewer {
   get _viewerElement() {

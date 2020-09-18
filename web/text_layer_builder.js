@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { renderTextLayer } from "pdfjs-lib";
+import { renderTextLayer } from "pdfjs-dist/build/pdf";
 
 const EXPAND_DIVS_TIMEOUT = 300; // ms
 

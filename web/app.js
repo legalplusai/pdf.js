@@ -53,7 +53,7 @@ import {
   UnexpectedResponseException,
   UNSUPPORTED_FEATURES,
   version,
-} from "pdfjs-lib";
+} from "pdfjs-dist/build/pdf";
 import { CursorTool, PDFCursorTools } from "./pdf_cursor_tools.js";
 import { PDFRenderingQueue, RenderingStates } from "./pdf_rendering_queue.js";
 import { PDFSidebar, SidebarView } from "./pdf_sidebar.js";

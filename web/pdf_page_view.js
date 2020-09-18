@@ -27,7 +27,7 @@ import {
   createPromiseCapability,
   RenderingCancelledException,
   SVGGraphics,
-} from "pdfjs-lib";
+} from "pdfjs-dist/build/pdf";
 import { RenderingStates } from "./pdf_rendering_queue.js";
 import { viewerCompatibilityParams } from "./viewer_compatibility.js";
 

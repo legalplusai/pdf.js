@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { AnnotationLayer } from "pdfjs-lib";
+import { AnnotationLayer } from "pdfjs-dist/build/pdf";
 import { NullL10n } from "./ui_utils.js";
 import { SimpleLinkService } from "./pdf_link_service.js";
 

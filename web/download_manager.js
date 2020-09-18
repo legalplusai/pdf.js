@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { createObjectURL, createValidAbsoluteUrl } from "pdfjs-lib";
+import { createObjectURL, createValidAbsoluteUrl } from "pdfjs-dist/build/pdf";
 import { viewerCompatibilityParams } from "./viewer_compatibility.js";
 
 if (typeof PDFJSDev !== "undefined" && !PDFJSDev.test("CHROME || GENERIC")) {
