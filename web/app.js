@@ -1139,6 +1139,10 @@ const PDFViewerApplication = {
   load(pdfDocument) {
     this.pdfDocument = pdfDocument;
 
+    const pdfViewer = this.pdfViewer;
+    pdfViewer.setDocument(pdfDocument);
+    const { firstPagePromise, onePageRendered, pagesPromise } = pdfViewer;
+
     pdfDocument.getDownloadInfo().then(() => {
       this.downloadComplete = true;
       this.loadingBar.hide();
@@ -1174,17 +1178,19 @@ const PDFViewerApplication = {
     this.pdfLinkService.setDocument(pdfDocument, baseDocumentUrl);
     this.pdfDocumentProperties.setDocument(pdfDocument, this.url);
 
-    const annotationStorage = pdfDocument.annotationStorage;
-    annotationStorage.onSetModified = function () {
-      window.addEventListener("beforeunload", beforeUnload);
-    };
-    annotationStorage.onResetModified = function () {
-      window.removeEventListener("beforeunload", beforeUnload);
-    };
-
-    const pdfViewer = this.pdfViewer;
-    pdfViewer.setDocument(pdfDocument);
-    const { firstPagePromise, onePageRendered, pagesPromise } = pdfViewer;
+    
+    var annotationStorage;
+    try {
+      annotationStorage = pdfDocument.annotationStorage;
+      annotationStorage.onSetModified = function () {
+        window.addEventListener("beforeunload", beforeUnload);
+      };
+      annotationStorage.onResetModified = function () {
+        window.removeEventListener("beforeunload", beforeUnload);
+      };
+    } catch(err) {
+      // pass
+    }
 
     const pdfThumbnailViewer = this.pdfThumbnailViewer;
     pdfThumbnailViewer.setDocument(pdfDocument);
@@ -1329,9 +1335,9 @@ const PDFViewerApplication = {
       });
       // Ensure that the layers accurately reflects the current state in the
       // viewer itself, rather than the default state provided by the API.
-      pdfViewer.optionalContentConfigPromise.then(optionalContentConfig => {
-        this.pdfLayerViewer.render({ optionalContentConfig, pdfDocument });
-      });
+      // pdfViewer.optionalContentConfigPromise.then(optionalContentConfig => {
+      //   this.pdfLayerViewer.render({ pdfDocument });
+      // });
     });
 
     this._initializePageLabels(pdfDocument);
@@ -1681,15 +1687,14 @@ const PDFViewerApplication = {
     const pagesOverview = this.pdfViewer.getPagesOverview();
     const printContainer = this.appConfig.printContainer;
     const printResolution = AppOptions.get("printResolution");
-    const optionalContentConfigPromise = this.pdfViewer
-      .optionalContentConfigPromise;
+    // const optionalContentConfigPromise = this.pdfViewer.optionalContentConfigPromise;
 
     const printService = PDFPrintServiceFactory.instance.createPrintService(
       this.pdfDocument,
       pagesOverview,
       printContainer,
       printResolution,
-      optionalContentConfigPromise,
+      // optionalContentConfigPromise,
       this.l10n
     );
     this.printService = printService;
@@ -2383,8 +2388,7 @@ function webViewerPrint() {
 }
 function webViewerDownloadOrSave(sourceEventType) {
   if (
-    PDFViewerApplication.pdfDocument &&
-    PDFViewerApplication.pdfDocument.annotationStorage.size > 0
+    PDFViewerApplication.pdfDocument && PDFViewerApplication.pdfDocument.annotationStorage.size > 0
   ) {
     PDFViewerApplication.save({ sourceEventType });
   } else {

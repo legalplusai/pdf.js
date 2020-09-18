@@ -13,3 +13,4 @@ This code is a "Derivative Work" under the meaning of the [APACHE-2.0](http://ww
 ## Changes
 
 * Alter `gulp generic` build process to flatten build artifacts
+* Alter the `web` scripts to work with the npm release `pdfjs-dist`.  Reconcile several API differences

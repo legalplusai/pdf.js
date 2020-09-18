@@ -183,11 +183,11 @@ class PDFThumbnailViewer {
       return;
     }
     const firstPagePromise = pdfDocument.getPage(1);
-    const optionalContentConfigPromise = pdfDocument.getOptionalContentConfig();
+    // const optionalContentConfigPromise = pdfDocument.getOptionalContentConfig();
 
     firstPagePromise
       .then(firstPdfPage => {
-        this._optionalContentConfigPromise = optionalContentConfigPromise;
+        // this._optionalContentConfigPromise = optionalContentConfigPromise;
 
         const pagesCount = pdfDocument.numPages;
         const viewport = firstPdfPage.getViewport({ scale: 1 });
@@ -200,7 +200,7 @@ class PDFThumbnailViewer {
             container: this.container,
             id: pageNum,
             defaultViewport: viewport.clone(),
-            optionalContentConfigPromise,
+            // optionalContentConfigPromise,
             linkService: this.linkService,
             renderingQueue: this.renderingQueue,
             checkSetImageDisabled,

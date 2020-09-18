@@ -459,7 +459,7 @@ class BaseViewer {
     const firstPagePromise = pdfDocument.getPage(1);
 
     const annotationStorage = pdfDocument.annotationStorage;
-    const optionalContentConfigPromise = pdfDocument.getOptionalContentConfig();
+    // const optionalContentConfigPromise = pdfDocument.getOptionalContentConfig();
 
     this._pagesCapability.promise.then(() => {
       this.eventBus.dispatch("pagesloaded", {
@@ -495,7 +495,7 @@ class BaseViewer {
     firstPagePromise
       .then(firstPdfPage => {
         this._firstPageCapability.resolve(firstPdfPage);
-        this._optionalContentConfigPromise = optionalContentConfigPromise;
+        // this._optionalContentConfigPromise = optionalContentConfigPromise;
 
         const scale = this.currentScale;
         const viewport = firstPdfPage.getViewport({ scale: scale * CSS_UNITS });
@@ -510,7 +510,7 @@ class BaseViewer {
             scale,
             defaultViewport: viewport.clone(),
             annotationStorage,
-            optionalContentConfigPromise,
+            // optionalContentConfigPromise,
             renderingQueue: this.renderingQueue,
             textLayerFactory,
             textLayerMode: this.textLayerMode,
@@ -1257,12 +1257,15 @@ class BaseViewer {
     if (!this.pdfDocument) {
       return Promise.resolve(null);
     }
+    return this._optionalContentConfigPromise;
+    /*
     if (!this._optionalContentConfigPromise) {
       // Prevent issues if the getter is accessed *before* the `onePageRendered`
       // promise has resolved; won't (normally) happen in the default viewer.
       return this.pdfDocument.getOptionalContentConfig();
     }
     return this._optionalContentConfigPromise;
+    */
   }
 
   /**
